@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 
-
+// WorkoutForm component
 const WorkoutForm = () => {
     const [type, setType] = useState('');
     const [duration, setDuration] = useState('');
     const [calories, setCalories] = useState('');
 
-
+    // Handle form submission
     const handleSubmit = async (e) => {
-        e.preventDefault(); 
+        e.preventDefault(); // Prevent default form submission
         const workout = { type, duration, calories };
 
         // Send workout data to the backend
@@ -16,7 +16,7 @@ const WorkoutForm = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` 
+                'Authorization': `Bearer ${localStorage.getItem('token')}` // Include token for authentication
             },
             body: JSON.stringify(workout)
         });
