@@ -7,8 +7,8 @@ const App = () => {
     return (
         <div className="app">
             <h1>FastFlow Fitness Tracker</h1>
-            <WorkoutForm />  
-            <Dashboard />     
+            <WorkoutForm />  {/* Component for adding workouts */}
+            <Dashboard />     {/* Component for displaying workouts */}
         </div>
     );
 };
