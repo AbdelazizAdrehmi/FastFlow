@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// Workout schema definition
 const WorkoutSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User ', required: true },
     type: { type: String, required: true },
@@ -8,4 +9,5 @@ const WorkoutSchema = new mongoose.Schema({
     date: { type: Date, default: Date.now }
 });
 
+// Export the Workout model
 module.exports = mongoose.model('Workout', WorkoutSchema);
