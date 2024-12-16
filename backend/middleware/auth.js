@@ -1,5 +1,6 @@
 const config = require('../config');
 
+// Middleware to authenticate user using JWT
 module.exports = (req, res, next) => {
     const token = req.header('Authorization')?.replace('Bearer ', '');
     if (!token) return res.status(401).send('Access denied');
