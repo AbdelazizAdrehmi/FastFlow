@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
+
 const Dashboard = () => {
     const [workouts, setWorkouts] = useState([]);
 
-    // Fetch workouts from the backend
+
     const fetchWorkouts = async () => {
         const response = await fetch('/api/workouts', {
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}` 
+                'Authorization': `Bearer ${localStorage.getItem('token')}` // Include token for authentication
             }
-        };
+        });
         const data = await response.json();
         setWorkouts(data); 
     };
@@ -29,7 +30,7 @@ const Dashboard = () => {
                 ))}
             </ul>
         </div>
-    ;
+    );
 };
 
 export default Dashboard;
