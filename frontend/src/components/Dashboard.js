@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-
+// Dashboard component
 const Dashboard = () => {
     const [workouts, setWorkouts] = useState([]);
 
-
+    // Fetch workouts from the backend
     const fetchWorkouts = async () => {
         const response = await fetch('/api/workouts', {
             headers: {
@@ -12,11 +12,11 @@ const Dashboard = () => {
             }
         });
         const data = await response.json();
-        setWorkouts(data); 
+        setWorkouts(data); // Set the fetched workouts to state
     };
 
     useEffect(() => {
-        fetchWorkouts(); 
+        fetchWorkouts(); // Fetch workouts when the component mounts
     }, []);
 
     return (
