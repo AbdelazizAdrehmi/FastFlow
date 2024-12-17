@@ -1,18 +1,22 @@
-1{
-2  "name": "fastflow",
-3  "version": "1.0.0",
-4  "description": "A fitness tracking application",
-5  "main": "app.js",
-6  "scripts": {
-7    "start": "node app.js"
-8  },
-9  "dependencies": {
-10    "bcrypt": "^5.0.1",
-11    "dotenv": "^10.0.0",
-12    "express": "^4.17.1",
-13    "jsonwebtoken": "^8.5.1",
-14    "mongoose": "^5.10.9"
-15  },
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",              // Latest version of Express
+    "mongoose": "^6.8.0",              // Latest version of Mongoose
+    "jsonwebtoken": "^9.0.0",          // Latest version of JSON Web Token
+    "bcrypt": "^5.1.0",                // Latest version of bcrypt for password hashing
+    "dotenv": "^16.0.3"                // Latest version of dotenv for environment variables
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"                // Development dependency for auto-restarting the server
+  }
 16  "author": "AbdelazizAdrehmi",
 17  "license": "All Copyright Reserved to Mr.AbdelazizAdrehmi"
 18}
