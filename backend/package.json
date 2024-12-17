@@ -17,6 +17,6 @@
   "devDependencies": {
     "nodemon": "^2.0.22"
   },
-  "author": "AbdelazizAdrehmi",
-  "license": "Reserved to AbdelazizAdrehmi"
+  "author": "Abdelaziz",
+  "license": "MIT"
 }
