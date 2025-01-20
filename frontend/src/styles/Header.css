@@ -1,1 +1,17 @@
+.header {
+    background-color: #333; /* Dark background for header */
+    color: white; /* White text color */
+    padding: 10px; /* Padding for header */
+    text-align: center; /* Centering text */
+}
 
+.header nav ul {
+    list-style-type: none; /* Removing bullet points */
+    padding: 0; /* Removing padding */
+}
+
+.header nav ul li {
+    display: inline; /* Displaying list items inline */
+    margin: 0 15px; /* Margin between items */
+    cursor: pointer; /* Pointer cursor on hover */
+}
