@@ -1,15 +1,15 @@
-const config = require('../config');
+const jwt = require('jsonwebtoken'); // Importing JWT
 
-// Middleware to authenticate user using JWT
-module.exports = (req, res, next) => {
-    const token = req.header('Authorization')?.replace('Bearer ', '');
-    if (!token) return res.status(401).send('Access denied');
+// Middleware to authenticate requests
+const authMiddleware = (req, res, next) => {
+    const token = req.headers['authorization']; // Getting token from headers
+    if (!token) return res.status(403).json({ message: 'No token provided' }); // No token provided
 
-    try {
-        const verified = jwt.verify(token, config.JWT_SECRET);
-        req.user = verified;
-        next();
-    } catch (err) {
-        res.status(400).send('Invalid token');
-    }
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => { // Verifying token
+        if (err) return res.status(500).json({ message: 'Failed to authenticate token' }); // Token verification failed
+        req.userId = decoded.id; // Storing user ID in request
+        next(); // Proceed to the next middleware
+    });
 };
+
+module.exports = { authMiddleware }; // Exporting authentication middleware
