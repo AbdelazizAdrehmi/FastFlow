@@ -1,1 +1,15 @@
+.sync-services {
+    background-color: #fff; /* White background for sync services */
+    padding: 20px; /* Padding for sync services */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
 
+.sync-services button {
+    padding: 10px 15px; /* Padding for buttons */
+    background-color: #17a2b8; /* Teal background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+}
