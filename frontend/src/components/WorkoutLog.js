@@ -13,7 +13,7 @@ const WorkoutLog = () => {
 
     // Function to add a new workout
     const addWorkout = () => {
-        setWork outs([...workouts, workout]); // Adding new workout to the list
+        setWorkouts([...workouts, workout]); // Adding new workout to the list
         setWorkout({ type: '', duration: '', calories: '' }); // Resetting input fields
     };
 
