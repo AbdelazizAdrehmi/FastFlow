@@ -1,20 +1,12 @@
-const express = require('express');
-const Workout = require('../models/Workout');
-const auth = require('../middleware/auth');
+const express = require('express'); // Importing Express
+const router = express.Router(); // Creating a new router
+const { addWorkout, getWorkouts } = require('../controllers/workoutController'); // Importing workout controller functions
+const { authMiddleware } = require('../middleware/authMiddleware'); // Importing authentication middleware
 
-const router = express.Router();
+// Route to add a new workout
+router.post('/', authMiddleware, addWorkout); // POST request to add a workout
 
-// Log a new workout
-router.post('/', auth, async (req, res) => {
-    const workout = new Workout({ ...req.body, userId: req.user.id });
-    await workout.save();
-    res.status(201).send('Workout logged');
-});
+// Route to get all workouts for a user
+router.get('/:userId', authMiddleware, getWorkouts); // GET request to fetch workouts by userId
 
-// Get workout history
-router.get('/', auth, async (req, res) => {
-    const workouts = await Workout.find({ userId: req.user.id });
-    res.json(workouts);
-});
-
-module.exports = router;
+module.exports = router; // Exporting workout routes
