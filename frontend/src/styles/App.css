@@ -1,1 +1,6 @@
-
+.app-container {
+    font-family: Arial, sans-serif; /* Setting font for the application */
+    margin: 0; /* Removing default margin */
+    padding: 20px; /* Adding padding */
+    background-color: #f4f4f4; /* Light background color */
+}
