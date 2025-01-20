@@ -1,58 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; // Importing React and useState hook
+import './WorkoutLog.css'; // Importing styles for WorkoutLog
 
-// WorkoutForm component
-const WorkoutForm = () => {
-    const [type, setType] = useState('');
-    const [duration, setDuration] = useState('');
-    const [calories, setCalories] = useState('');
+// WorkoutLog component
+const WorkoutLog = () => {
+    const [workouts, setWorkouts] = useState([]); // State to hold workouts
+    const [workout, setWorkout] = useState({ type: '', duration: '', calories: '' }); // State for new workout
 
-    // Handle form submission
-    const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent default form submission
-        const workout = { type, duration, calories };
+    // Function to handle input changes
+    const handleChange = (e) => {
+        setWorkout({ ...workout, [e.target.name]: e.target.value });
+    };
 
-        // Send workout data to the backend
-        await fetch('/api/workouts', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` // Include token for authentication
-            },
-            body: JSON.stringify(workout)
-        });
-
-        // Clear the form
-        setType('');
-        setDuration('');
-        setCalories('');
+    // Function to add a new workout
+    const addWorkout = () => {
+        setWork outs([...workouts, workout]); // Adding new workout to the list
+        setWorkout({ type: '', duration: '', calories: '' }); // Resetting input fields
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                placeholder="Workout Type"
-                value={type}
-                onChange={(e) => setType(e.target.value)}
-                required
-            />
-            <input
-                type="number"
-                placeholder="Duration (min)"
-                value={duration}
-                onChange={(e) => setDuration(e.target.value)}
-                required
-            />
-            <input
-                type="number"
-                placeholder="Calories Burned"
-                value={calories}
-                onChange={(e) => setCalories(e.target.value)}
-                required
-            />
-            <button type="submit">Add Workout</button>
-        </form>
+        <div className="workout-log">
+            <h2>Log Your Workouts</h2> {/* Section Title */}
+            <input 
+                type="text" 
+                name="type" 
+                placeholder="Workout Type" 
+                value={workout.type} 
+                onChange={handleChange} 
+            /> {/* Input for workout type */}
+            <input 
+                type="number" 
+                name="duration" 
+                placeholder="Duration (minutes)" 
+                value={workout.duration} 
+                onChange={handleChange} 
+            /> {/* Input for workout duration */}
+            <input 
+                type="number" 
+                name="calories" 
+                placeholder="Calories Burned" 
+                value={workout.calories} 
+                onChange={handleChange} 
+            /> {/* Input for calories burned */}
+            <button onClick={addWorkout}>Add Workout</button> {/* Button to add workout */}
+            <ul>
+                {workouts.map((w, index) => (
+                    <li key={index}>{`${w.type} - ${w.duration} min - ${w.calories} cal`}</li> // Displaying logged workouts
+                ))}
+            </ul>
+        </div>
     );
 };
 
-export default WorkoutForm;
+export default WorkoutLog; // Exporting WorkoutLog component
